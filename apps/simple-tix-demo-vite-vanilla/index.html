@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      href="https://embed.prod.simpletix.com/assets/widget/widget.min.css?t=2024.05.08"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>simple-tix-demo-vite</title>
+  </head>
+  <body>
+    <script src="https://embed.prod.simpletix.com/assets/widget/widget.min.js?t=2025.10.09"></script>
+    <div class="smt-pin-board" id="smt_pinBoard">
+      <input
+        type="hidden"
+        value="5d56123d-da7b-4a8d-88ea-78852d090434"
+        id="smt_hdnApplicationId"
+      />
+      <input type="hidden" value="OLW" id="smt_hdnStoreName" />
+      <input type="hidden" value="0" id="smt_openEventPageType" />
+      <input type="hidden" value="1" id="smt_isDisplayEventCategory" />
+      <input type="hidden" value="" id="smt_selectedEventCategories" />
+      <input type="hidden" value="Next50" id="smt_displayStyle" />
+      <input type="hidden" value="" id="smt_selectedInternalCategories" />
+    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
