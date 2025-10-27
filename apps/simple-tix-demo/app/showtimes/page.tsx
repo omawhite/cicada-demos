@@ -1,5 +1,6 @@
 /** biome-ignore-all lint/correctness/useUniqueElementIds: just leave me 
-alone plz */
+ alone plz */
+"use client";
 import Script from "next/script";
 
 export default function Showtimes() {
