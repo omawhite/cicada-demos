@@ -1,0 +1,17 @@
+---
+// Banner component for Cicada Cinema
+import BannerImage from '../assets/images/Cicada_Curtain_CROP_2.png';
+---
+
+<div
+  class="relative w-full h-[20rem] md:h-[24rem] lg:h-[32rem] overflow-hidden border-t-2 border-b-2 border-gradient-to-r border-transparent border-opacity-30"
+  style="border-image: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent) 1;"
+>
+  <!-- Background curtain image -->
+  <img
+    src={BannerImage.src}
+    alt="Cicada Cinema Banner"
+    class="object-cover object-center w-full h-full"
+    loading="eager"
+  />
+</div>
