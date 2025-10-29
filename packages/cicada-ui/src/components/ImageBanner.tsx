@@ -8,7 +8,7 @@ interface ImageBannerProps {
   imageClassName?: string;
 }
 
-export const ImageBanner: React.FC<ImageBannerProps> = ({
+const ImageBanner: React.FC<ImageBannerProps> = ({
   children,
   imageSrc,
   imageAlt = 'Banner Image',
@@ -35,3 +35,5 @@ export const ImageBanner: React.FC<ImageBannerProps> = ({
     </div>
   );
 };
+
+export default ImageBanner;

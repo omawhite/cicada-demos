@@ -1,4 +1,4 @@
-import { ImageBanner } from '@workspace/cicada-ui/components/ImageBanner';
+import ImageBanner from '@workspace/cicada-ui/components/ImageBanner';
 import { Button } from '@workspace/ui/components/button';
 import Image from 'next/image';
 
