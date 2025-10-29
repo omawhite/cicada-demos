@@ -1,5 +1,5 @@
-import { Button } from "@workspace/ui/components/button";
-import Banner from "../components/Banner";
+import { Button } from '@workspace/ui/components/button';
+import Banner from '../components/Banner';
 
 export default function Page() {
   return (
