@@ -1,24 +1,24 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 
-import "@workspace/ui/globals.css";
-import Header from "@/components/Header";
-import { Providers } from "@/components/providers";
+import '@workspace/ui/globals.css';
+import { Providers } from '@/components/providers';
+import SiteHeader from '@/components/SiteHeader';
 
 const fontSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ['latin'],
+  variable: '--font-sans',
 });
 
 const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+  subsets: ['latin'],
+  variable: '--font-mono',
 });
 
 export const metadata: Metadata = {
-  title: "Simple Tix Demo",
-  description: "A simple ticket management demo application",
+  title: 'Simple Tix Demo',
+  description: 'A simple ticket management demo application',
 };
 
 export default function RootLayout({
@@ -45,7 +45,7 @@ export default function RootLayout({
         />
 
         <Providers>
-          <Header />
+          <SiteHeader />
           {children}
         </Providers>
       </body>

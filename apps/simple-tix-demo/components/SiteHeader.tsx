@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
+import Header from '@workspace/cicada-ui/components/Header';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Header() {
+export default function SiteHeader() {
   return (
-    <header className="bg-black text-white py-4 px-8">
-      <div className="max-w-6xl mx-auto flex items-center justify-start">
-        {/* Logo and brand */}
+    <Header
+      logo={
         <Link href="/" className="flex items-center">
           <Image
             src="/images/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png"
@@ -15,8 +15,9 @@ export default function Header() {
             className="w-18 h-18"
           />
         </Link>
-        {/* Navigation links */}
-        <nav className="flex items-center space-x-6 ml-8">
+      }
+      navigationLinks={
+        <>
           <Link
             href="/"
             className="text-white hover:text-gray-300 transition-colors duration-200"
@@ -35,8 +36,8 @@ export default function Header() {
           >
             Calendar
           </Link>
-        </nav>
-      </div>
-    </header>
+        </>
+      }
+    />
   );
 }
