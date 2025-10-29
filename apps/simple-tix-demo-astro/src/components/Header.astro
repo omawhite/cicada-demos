@@ -1,0 +1,124 @@
+---
+// Header component for Cicada Cinema
+---
+
+<header class="bg-black text-white py-4 px-8">
+  <div class="max-w-6xl mx-auto flex items-center justify-start">
+    <!-- Logo and brand -->
+    <a href="/" class="flex items-center">
+      <img
+        src="/images/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png"
+        alt="Cicada Cinema"
+        width="60"
+        height="60"
+        class="w-18 h-18"
+      />
+    </a>
+    <!-- Navigation links -->
+    <nav class="flex items-center space-x-6 ml-8">
+      <a
+        href="/"
+        class="text-white hover:text-gray-300 transition-colors duration-200"
+      >
+        Home
+      </a>
+      <a
+        href="/showtimes"
+        class="text-white hover:text-gray-300 transition-colors duration-200"
+      >
+        Showtimes
+      </a>
+      <a
+        href="/calendar"
+        class="text-white hover:text-gray-300 transition-colors duration-200"
+      >
+        Calendar
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .bg-black {
+    background-color: #000000;
+  }
+
+  .text-white {
+    color: #ffffff;
+  }
+
+  .py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .max-w-6xl {
+    max-width: 72rem;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+
+  .justify-start {
+    justify-content: flex-start;
+  }
+
+  .flex.items-center {
+    display: flex;
+    align-items: center;
+  }
+
+  .space-x-6 > * + * {
+    margin-left: 1.5rem;
+  }
+
+  .ml-8 {
+    margin-left: 2rem;
+  }
+
+  .w-18 {
+    width: 4.5rem;
+  }
+
+  .h-18 {
+    height: 4.5rem;
+  }
+
+  .hover\:text-gray-300:hover {
+    color: #d1d5db;
+  }
+
+  .transition-colors {
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .duration-200 {
+    transition-duration: 200ms;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+</style>

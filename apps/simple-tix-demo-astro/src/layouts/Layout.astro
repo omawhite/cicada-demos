@@ -1,3 +1,7 @@
+---
+import Header from '../components/Header.astro';
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,12 +17,13 @@
     <title>Astro Basics</title>
   </head>
   <body>
+    <Header />
+    <slot />
     {/* SimpleTix script */}
     <script
       is:inline
       src="https://embed.prod.simpletix.com/assets/widget/widget.min.js?t=2025.10.09"
     ></script>
-    <slot />
   </body>
 </html>
 

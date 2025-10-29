@@ -1,0 +1,76 @@
+---
+// Banner component for Cicada Cinema
+---
+
+<div
+  class="relative w-full h-[28rem] md:h-[36rem] lg:h-[48rem] overflow-hidden border-t-2 border-b-2"
+  style="border-image: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent) 1;"
+>
+  <!-- Background curtain image -->
+  <img
+    src="/images/Cicada_Curtain_CROP_2.png"
+    alt="Cicada Cinema Banner"
+    class="object-cover w-full h-full"
+    loading="eager"
+  />
+</div>
+
+<style>
+  .relative {
+    position: relative;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .h-\[28rem\] {
+    height: 28rem;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .border-t-2 {
+    border-top-width: 2px;
+  }
+
+  .border-b-2 {
+    border-bottom-width: 2px;
+  }
+
+  .object-cover {
+    object-fit: cover;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .h-full {
+    height: 100%;
+  }
+
+  /* Responsive height classes */
+  @media (min-width: 768px) {
+    .md\:h-\[36rem\] {
+      height: 36rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:h-\[48rem\] {
+      height: 48rem;
+    }
+  }
+
+  /* Ensure the image fills the container */
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
