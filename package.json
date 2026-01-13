@@ -6,7 +6,9 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "turbo format"
+    "format": "turbo format",
+    "deploy": "turbo deploy",
+    "deploy:preview": "turbo deploy:preview"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.1",
