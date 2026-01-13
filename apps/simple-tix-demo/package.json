@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint . --max-warnings 0",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.1",
@@ -27,6 +28,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1"
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "wrangler": "^4.58.0"
   }
 }
