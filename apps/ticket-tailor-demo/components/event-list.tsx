@@ -34,16 +34,12 @@ function getStatusBadgeVariant(
   status: TicketTailorEvent['status']
 ): 'default' | 'secondary' | 'destructive' | 'outline' {
   switch (status) {
-    case 'on_sale':
-      return 'default';
     case 'published':
-      return 'secondary';
-    case 'sold_out':
-      return 'destructive';
-    case 'sales_ended':
-      return 'outline';
+      return 'default';
     case 'draft':
       return 'outline';
+    case 'sales_closed':
+      return 'secondary';
     default:
       return 'secondary';
   }
@@ -51,16 +47,12 @@ function getStatusBadgeVariant(
 
 function getStatusLabel(status: TicketTailorEvent['status']): string {
   switch (status) {
-    case 'on_sale':
-      return 'On Sale';
     case 'published':
       return 'Published';
-    case 'sold_out':
-      return 'Sold Out';
-    case 'sales_ended':
-      return 'Sales Ended';
     case 'draft':
       return 'Draft';
+    case 'sales_closed':
+      return 'Sales Closed';
     default:
       return status;
   }

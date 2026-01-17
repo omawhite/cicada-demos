@@ -36,7 +36,7 @@ export interface TicketTailorEvent {
   };
   url: string;
   currency: string;
-  status: 'published' | 'draft' | 'on_sale' | 'sales_ended' | 'sold_out';
+  status: 'published' | 'draft' | 'sales_closed';
   images?: {
     header?: string;
     thumbnail?: string;
