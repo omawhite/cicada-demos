@@ -1,0 +1,155 @@
+import Image from 'next/image';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import type { TicketTailorEvent } from '@/lib/types/ticket-tailor';
+import { cn } from '@/lib/utils';
+
+function formatEventDate(start: TicketTailorEvent['start']): string {
+  const date = new Date(start.iso);
+  return date.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
+function formatEventTime(start: TicketTailorEvent['start']): string {
+  const date = new Date(start.iso);
+  return date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  });
+}
+
+function getStatusBadgeVariant(
+  status: TicketTailorEvent['status']
+): 'default' | 'secondary' | 'destructive' | 'outline' {
+  switch (status) {
+    case 'on_sale':
+      return 'default';
+    case 'published':
+      return 'secondary';
+    case 'sold_out':
+      return 'destructive';
+    case 'sales_ended':
+      return 'outline';
+    case 'draft':
+      return 'outline';
+    default:
+      return 'secondary';
+  }
+}
+
+function getStatusLabel(status: TicketTailorEvent['status']): string {
+  switch (status) {
+    case 'on_sale':
+      return 'On Sale';
+    case 'published':
+      return 'Published';
+    case 'sold_out':
+      return 'Sold Out';
+    case 'sales_ended':
+      return 'Sales Ended';
+    case 'draft':
+      return 'Draft';
+    default:
+      return status;
+  }
+}
+
+interface EventCardProps {
+  event: TicketTailorEvent;
+}
+
+function EventCard({ event }: EventCardProps) {
+  const venueName =
+    event.venue?.name ?? (event.online_event ? 'Online Event' : undefined);
+
+  return (
+    <Card className="flex h-full flex-col">
+      {event.images?.header && (
+        <div className="relative h-48 w-full">
+          <Image
+            src={event.images.header}
+            alt={event.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
+      <CardHeader>
+        <div className="flex items-start justify-between gap-2">
+          <CardTitle className="line-clamp-2">{event.name}</CardTitle>
+          <Badge variant={getStatusBadgeVariant(event.status)}>
+            {getStatusLabel(event.status)}
+          </Badge>
+        </div>
+        <CardDescription>
+          {formatEventDate(event.start)} at {formatEventTime(event.start)}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex-1">
+        {event.description && (
+          <p className="text-muted-foreground line-clamp-3 text-sm">
+            {event.description}
+          </p>
+        )}
+        {venueName && (
+          <p className="text-muted-foreground mt-2 text-sm">
+            <span className="font-medium">Location:</span> {venueName}
+          </p>
+        )}
+      </CardContent>
+      <CardFooter>
+        <a
+          href={event.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-primary text-primary-foreground hover:bg-primary/80 inline-flex h-9 w-full items-center justify-center rounded-4xl px-3 text-sm font-medium transition-all"
+        >
+          View Event
+        </a>
+      </CardFooter>
+    </Card>
+  );
+}
+
+interface EventListProps {
+  events: TicketTailorEvent[];
+  className?: string;
+}
+
+export function EventList({ events, className }: EventListProps) {
+  if (events.length === 0) {
+    return (
+      <div className={cn('flex items-center justify-center py-12', className)}>
+        <div className="text-muted-foreground">No events found</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={cn('space-y-6', className)}>
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-semibold tracking-tight">Events</h2>
+        <span className="text-muted-foreground text-sm">
+          {events.length} event{events.length !== 1 ? 's' : ''}
+        </span>
+      </div>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {events.map(event => (
+          <EventCard key={event.id} event={event} />
+        ))}
+      </div>
+    </div>
+  );
+}
