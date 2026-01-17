@@ -1,6 +1,7 @@
 /**
  * Ticket Tailor API Types
  * @see https://developers.tickettailor.com/docs/api/get-all-events
+ * @see https://developers.tickettailor.com/docs/api/get-event-by-id
  */
 
 export interface TicketTailorImage {
@@ -58,6 +59,10 @@ export interface TicketTailorEventsResponse {
     next?: string;
     previous?: string;
   };
+}
+
+export interface TicketTailorEventResponse {
+  data: TicketTailorEvent;
 }
 
 export interface TicketTailorError {

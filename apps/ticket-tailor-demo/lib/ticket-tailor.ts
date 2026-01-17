@@ -1,5 +1,6 @@
 import type {
   TicketTailorEvent,
+  TicketTailorEventResponse,
   TicketTailorEventsResponse,
 } from '@/lib/types/ticket-tailor';
 
@@ -44,5 +45,34 @@ export async function getEvents(
   }
 
   const data: TicketTailorEventsResponse = await response.json();
+  return data.data;
+}
+
+export async function getEvent(eventId: string): Promise<TicketTailorEvent> {
+  const apiKey = process.env.TICKET_TAILOR_API_KEY;
+
+  if (!apiKey) {
+    throw new Error('TICKET_TAILOR_API_KEY is not configured');
+  }
+
+  if (!eventId) {
+    throw new Error('Event ID is required');
+  }
+
+  const url = `${TICKET_TAILOR_API_URL}/${eventId}`;
+
+  const response = await fetch(url, {
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Basic ${Buffer.from(apiKey).toString('base64')}`,
+    },
+    next: { revalidate: 60 },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch event ${eventId}: ${response.status}`);
+  }
+
+  const data: TicketTailorEventResponse = await response.json();
   return data.data;
 }

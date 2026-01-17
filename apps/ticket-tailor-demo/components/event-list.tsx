@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   Card,
   CardContent,
@@ -102,14 +103,12 @@ function EventCard({ event }: EventCardProps) {
         )}
       </CardContent>
       <CardFooter>
-        <a
-          href={event.url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href={`/events/${event.id}`}
           className="bg-primary text-primary-foreground hover:bg-primary/80 inline-flex h-9 w-full items-center justify-center rounded-4xl px-3 text-sm font-medium transition-all"
         >
           View Event
-        </a>
+        </Link>
       </CardFooter>
     </Card>
   );
