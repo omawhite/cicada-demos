@@ -137,9 +137,10 @@ export function EventDetail({ event }: EventDetailProps) {
           {event.description && (
             <div className="space-y-2">
               <h3 className="font-semibold">About this event</h3>
-              <p className="text-muted-foreground whitespace-pre-wrap">
-                {event.description}
-              </p>
+              <div
+                className="text-muted-foreground prose prose-sm max-w-none"
+                dangerouslySetInnerHTML={{ __html: event.description }}
+              />
             </div>
           )}
 
@@ -170,6 +171,7 @@ export function EventDetail({ event }: EventDetailProps) {
                 </span>
               )}
             </div>
+            {/* TODO: This needs to open up the ticket tailor checkout widget */}
             <a
               href={event.url}
               target="_blank"

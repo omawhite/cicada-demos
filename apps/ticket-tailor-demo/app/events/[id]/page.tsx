@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import { EventDetail } from '@/components/event-detail';
 import { getEvent } from '@/lib/ticket-tailor';
 
@@ -11,15 +10,14 @@ interface EventPageProps {
 export default async function EventPage({ params }: EventPageProps) {
   const { id } = await params;
 
-  try {
-    const event = await getEvent(id);
+  const event = await getEvent(id);
 
-    return (
-      <main className="container mx-auto px-4 py-8">
-        <EventDetail event={event} />
-      </main>
-    );
-  } catch {
-    notFound();
-  }
+  console.log('Fetched event from Ticket Tailor API:');
+  console.log(event);
+
+  return (
+    <main className="container mx-auto px-4 py-8">
+      <EventDetail event={event} />
+    </main>
+  );
 }

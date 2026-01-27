@@ -70,12 +70,13 @@ function EventCard({ event }: EventCardProps) {
   return (
     <Card className="flex h-full flex-col">
       {event.images?.header && (
-        <div className="relative h-48 w-full">
+        <div className="relative w-full max-h-48">
           <Image
             src={event.images.header}
             alt={event.name}
-            fill
-            className="object-cover"
+            width={400}
+            height={200}
+            // className="h-48 w-full object-cover"
           />
         </div>
       )}
@@ -92,9 +93,10 @@ function EventCard({ event }: EventCardProps) {
       </CardHeader>
       <CardContent className="flex-1">
         {event.description && (
-          <p className="text-muted-foreground line-clamp-3 text-sm">
-            {event.description}
-          </p>
+          <div
+            className="text-muted-foreground line-clamp-3 text-sm"
+            dangerouslySetInnerHTML={{ __html: event.description }}
+          />
         )}
         {venueName && (
           <p className="text-muted-foreground mt-2 text-sm">

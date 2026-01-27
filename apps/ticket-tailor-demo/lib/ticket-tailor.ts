@@ -38,7 +38,6 @@ export async function getEvents(
     },
     next: { revalidate: 60 },
   });
-  console.dir('Ticket Tailor API Response Status:', response);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch events: ${response.status}`);
@@ -73,6 +72,8 @@ export async function getEvent(eventId: string): Promise<TicketTailorEvent> {
     throw new Error(`Failed to fetch event ${eventId}: ${response.status}`);
   }
 
+  //TODO: need to fix this typing
   const data: TicketTailorEventResponse = await response.json();
-  return data.data;
+  //@ts-expect-error gotta fix typing
+  return data;
 }
