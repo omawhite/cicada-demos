@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import type { TicketTailorEvent } from '@/lib/types/ticket-tailor';
 
 function formatEventDate(start: TicketTailorEvent['start']): string {
@@ -40,34 +39,6 @@ function formatEventTime(
   });
 
   return `${startTime} - ${endTime}`;
-}
-
-function getStatusBadgeVariant(
-  status: TicketTailorEvent['status']
-): 'default' | 'secondary' | 'destructive' | 'outline' {
-  switch (status) {
-    case 'published':
-      return 'default';
-    case 'draft':
-      return 'outline';
-    case 'sales_closed':
-      return 'secondary';
-    default:
-      return 'secondary';
-  }
-}
-
-function getStatusLabel(status: TicketTailorEvent['status']): string {
-  switch (status) {
-    case 'published':
-      return 'Published';
-    case 'draft':
-      return 'Draft';
-    case 'sales_closed':
-      return 'Sales Closed';
-    default:
-      return status;
-  }
 }
 
 interface EventDetailProps {
@@ -113,24 +84,16 @@ export function EventDetail({ event }: EventDetailProps) {
           </div>
         )}
         <CardHeader>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div className="space-y-2">
-              <CardTitle className="text-2xl sm:text-3xl">
-                {event.name}
-              </CardTitle>
-              <CardDescription className="text-base">
-                {formatEventDate(event.start)}
-              </CardDescription>
-              <CardDescription>
-                {formatEventTime(event.start, event.end)}
-              </CardDescription>
-            </div>
-            <Badge
-              variant={getStatusBadgeVariant(event.status)}
-              className="w-fit"
-            >
-              {getStatusLabel(event.status)}
-            </Badge>
+          <div className="space-y-2">
+            <CardTitle className="text-2xl sm:text-3xl">
+              {event.name}
+            </CardTitle>
+            <CardDescription className="text-base">
+              {formatEventDate(event.start)}
+            </CardDescription>
+            <CardDescription>
+              {formatEventTime(event.start, event.end)}
+            </CardDescription>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
