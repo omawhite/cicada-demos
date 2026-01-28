@@ -19,7 +19,9 @@ export async function getEvents(
   const apiKey = process.env.TICKET_TAILOR_API_KEY;
 
   if (!apiKey) {
-    throw new Error('TICKET_TAILOR_API_KEY is not configured');
+    // throw new Error('TICKET_TAILOR_API_KEY is not configured');
+    console.error('TICKET_TAILOR_API_KEY is not configured');
+    return [];
   }
 
   const url = new URL(TICKET_TAILOR_API_URL);
