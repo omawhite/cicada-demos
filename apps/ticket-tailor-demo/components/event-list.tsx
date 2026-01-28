@@ -47,7 +47,6 @@ function EventCard({ event }: EventCardProps) {
             alt={event.name}
             width={400}
             height={200}
-            // className="h-48 w-full object-cover"
           />
         </div>
       )}
@@ -58,12 +57,6 @@ function EventCard({ event }: EventCardProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1">
-        {event.description && (
-          <div
-            className="text-muted-foreground line-clamp-3 text-sm"
-            dangerouslySetInnerHTML={{ __html: event.description }}
-          />
-        )}
         {venueName && (
           <p className="text-muted-foreground mt-2 text-sm">
             <span className="font-medium">Location:</span> {venueName}
