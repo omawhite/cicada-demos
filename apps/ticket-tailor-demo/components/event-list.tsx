@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import type { TicketTailorEvent } from '@/lib/types/ticket-tailor';
 import { cn } from '@/lib/utils';
 
@@ -31,34 +30,6 @@ function formatEventTime(start: TicketTailorEvent['start']): string {
   });
 }
 
-function getStatusBadgeVariant(
-  status: TicketTailorEvent['status']
-): 'default' | 'secondary' | 'destructive' | 'outline' {
-  switch (status) {
-    case 'published':
-      return 'default';
-    case 'draft':
-      return 'outline';
-    case 'sales_closed':
-      return 'secondary';
-    default:
-      return 'secondary';
-  }
-}
-
-function getStatusLabel(status: TicketTailorEvent['status']): string {
-  switch (status) {
-    case 'published':
-      return 'Published';
-    case 'draft':
-      return 'Draft';
-    case 'sales_closed':
-      return 'Sales Closed';
-    default:
-      return status;
-  }
-}
-
 interface EventCardProps {
   event: TicketTailorEvent;
 }
@@ -76,28 +47,16 @@ function EventCard({ event }: EventCardProps) {
             alt={event.name}
             width={400}
             height={200}
-            // className="h-48 w-full object-cover"
           />
         </div>
       )}
       <CardHeader>
-        <div className="flex items-start justify-between gap-2">
-          <CardTitle className="line-clamp-2">{event.name}</CardTitle>
-          <Badge variant={getStatusBadgeVariant(event.status)}>
-            {getStatusLabel(event.status)}
-          </Badge>
-        </div>
+        <CardTitle className="line-clamp-2">{event.name}</CardTitle>
         <CardDescription>
           {formatEventDate(event.start)} at {formatEventTime(event.start)}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-1">
-        {event.description && (
-          <div
-            className="text-muted-foreground line-clamp-3 text-sm"
-            dangerouslySetInnerHTML={{ __html: event.description }}
-          />
-        )}
         {venueName && (
           <p className="text-muted-foreground mt-2 text-sm">
             <span className="font-medium">Location:</span> {venueName}
