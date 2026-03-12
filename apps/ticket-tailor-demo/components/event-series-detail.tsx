@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { TicketTailorCheckoutButton } from '@/components/ticket-tailor-checkout-button';
 import type { TicketTailorEventSeries } from '@/lib/types/ticket-tailor';
 
 interface EventSeriesDetailProps {
@@ -88,14 +89,12 @@ export function EventSeriesDetail({ series }: EventSeriesDetailProps) {
           )}
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <a
-              href={series.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary text-primary-foreground hover:bg-primary/80 inline-flex h-10 items-center justify-center rounded-4xl px-6 text-sm font-medium transition-all"
+            <TicketTailorCheckoutButton
+              eventUrl={series.url}
+              className="bg-primary text-primary-foreground hover:bg-primary/80 inline-flex h-10 cursor-pointer items-center justify-center rounded-4xl px-6 text-sm font-medium transition-all"
             >
-              View on Ticket Tailor
-            </a>
+              Buy Tickets
+            </TicketTailorCheckoutButton>
           </div>
         </CardContent>
       </Card>
