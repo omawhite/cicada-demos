@@ -10,12 +10,17 @@ declare global {
         eventId: number,
         type: string
       ) => void;
+      loadEventOccurrence: (
+        boxOfficeName: string,
+        occurrenceId: number
+      ) => void;
     };
   }
 }
 
 interface TicketTailorCheckoutButtonProps {
   eventUrl: string;
+  occurrenceId?: string;
   className?: string;
   children?: React.ReactNode;
 }
@@ -51,8 +56,15 @@ function parseTicketTailorUrl(url: string): {
   }
 }
 
+function parseOccurrenceId(id: string): number | null {
+  // Event IDs from the API are like "ev_7061328" — extract the numeric part
+  const match = id.match(/(\d+)$/);
+  return match ? parseInt(match[1], 10) : null;
+}
+
 export function TicketTailorCheckoutButton({
   eventUrl,
+  occurrenceId,
   className,
   children = 'Buy Tickets',
 }: TicketTailorCheckoutButtonProps) {
@@ -72,6 +84,13 @@ export function TicketTailorCheckoutButton({
   }
 
   const handleClick = () => {
+    if (occurrenceId) {
+      const numericId = parseOccurrenceId(occurrenceId);
+      if (numericId) {
+        window.TTWidget?.loadEventOccurrence(parsed.boxOfficeName, numericId);
+        return;
+      }
+    }
     window.TTWidget?.loadEvent(parsed.boxOfficeName, parsed.eventId, 'widget');
   };
 
