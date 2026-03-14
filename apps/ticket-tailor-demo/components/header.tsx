@@ -22,6 +22,12 @@ export function Header() {
             Home
           </Link>
           <Link
+            href="/all-screenings"
+            className="text-white transition-colors duration-200 hover:text-gray-300"
+          >
+            All Screenings
+          </Link>
+          <Link
             href="/previous-showings"
             className="text-white transition-colors duration-200 hover:text-gray-300"
           >

@@ -65,6 +65,32 @@ export interface TicketTailorEventResponse {
   data: TicketTailorEvent;
 }
 
+export interface TicketTailorEventSeries {
+  id: string;
+  name: string;
+  description?: string;
+  url: string;
+  currency: string;
+  status: 'published' | 'draft' | 'sales_closed';
+  images?: {
+    header?: string;
+    thumbnail?: string;
+  };
+  venue?: TicketTailorVenue;
+  online_event?: boolean;
+  private?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface TicketTailorEventSeriesResponse {
+  data: TicketTailorEventSeries[];
+  links?: {
+    next?: string;
+    previous?: string;
+  };
+}
+
 export interface TicketTailorError {
   status: number;
   error_code: string;
